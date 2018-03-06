@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.iscte.es2.decisionsoft.gui.controllers.ProblemTabMenuController">
+   <tabs>
+      <Tab text="Problem Definition">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="268.0" prefWidth="573.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="24.0" text="Problem Name: " />
+                  <TextField fx:id="problemNameTextField" layoutX="100.0" layoutY="20.0" prefHeight="25.0" prefWidth="475.0" />
+                  <Label layoutX="14.0" layoutY="58.0" text="Problem Description" />
+                  <TextArea fx:id="problemDescriptionTextArea" layoutX="14.0" layoutY="75.0" prefHeight="200.0" prefWidth="558.0" />
+                  <Label layoutX="14.0" layoutY="292.0" text="User email: " />
+                  <TextField fx:id="userEmailTextField" layoutX="76.0" layoutY="288.0" prefHeight="25.0" prefWidth="497.0" />
+                  <Button fx:id="backButton" layoutX="464.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleBack" text="&lt; Back" />
+                  <Button fx:id="nextButton" layoutX="526.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleNext" text="Next &gt;" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Time Preferences">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="111.0" layoutY="157.0" text="Desirable time to determine best solution" />
+                  <Label layoutX="111.0" layoutY="197.0" text="Maximum time to determine best Solution" />
+                  <Button fx:id="nextButton1" layoutX="526.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleNext" text="Next &gt;" />
+                  <Button fx:id="backButton1" layoutX="464.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleBack" text="&lt; Back" />
+                  <ChoiceBox layoutX="340.0" layoutY="153.0" prefWidth="150.0" />
+                  <ChoiceBox layoutX="340.0" layoutY="193.0" prefWidth="150.0" />
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Variables">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="26.0" layoutY="22.0" text="Number of decision variables:" />
+                  <Separator layoutY="81.0" prefHeight="0.0" prefWidth="600.0" />
+                  <TextField layoutX="190.0" layoutY="18.0" prefHeight="25.0" prefWidth="40.0" />
+                  <Label layoutX="26.0" layoutY="51.0" text="Variable group name:" />
+                  <TextField layoutX="190.0" layoutY="47.0" prefHeight="25.0" prefWidth="130.0" />
+                  <Label layoutX="26.0" layoutY="94.0" text="Decision variables:" />
+                  <ListView layoutX="26.0" layoutY="111.0" prefHeight="240.0" prefWidth="261.0" />
+                  <Label layoutX="357.0" layoutY="111.0" text="Decision variable values:" />
+                  <Label layoutX="469.0" layoutY="128.0" text="Min" />
+                  <Label layoutX="468.0" layoutY="154.0" text="Máx" />
+                  <TextField layoutX="498.0" layoutY="124.0" prefHeight="25.0" prefWidth="40.0" />
+                  <TextField layoutX="498.0" layoutY="150.0" prefHeight="25.0" prefWidth="40.0" />
+                  <Label layoutX="357.0" layoutY="177.0" text="Invalid values:" />
+                  <TextField layoutX="357.0" layoutY="194.0" prefHeight="25.0" prefWidth="172.0" />
+                  <Button layoutX="338.0" layoutY="238.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="210.0" text="Set optimization criteria" />
+                  <Button layoutX="338.0" layoutY="271.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="210.0" text="Set variable(s) name(s)" />
+                  <Button fx:id="backButton11" layoutX="464.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleBack" text="&lt; Back" />
+                  <Button fx:id="nextButton11" layoutX="526.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleNext" text="Next &gt;" />
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Evaluation Mode">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField layoutX="14.0" layoutY="173.0" prefHeight="25.0" prefWidth="494.0" />
+                  <Button layoutX="516.0" layoutY="173.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Browse" />
+                  <Label layoutX="14.0" layoutY="156.0" text="Select evaluation file (.jar)" />
+                  <Button fx:id="backButton111" layoutX="464.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleBack" text="&lt; Back" />
+                  <Button fx:id="nextButton111" layoutX="526.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleNext" text="Next &gt;" />
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Algorithm">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Available Algorithm(s):" />
+                  <ListView layoutX="84.0" layoutY="42.0" prefHeight="275.0" prefWidth="433.0" />
+                  <Button layoutX="409.0" layoutY="325.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Cancel" />
+                  <Button layoutX="507.0" layoutY="325.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="78.0" text="OK" />
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="FAQ">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea layoutX="12.0" layoutY="8.0" prefHeight="282.0" prefWidth="577.0" promptText="Inserir Perguntas e Respostas" />
+                  <Label layoutX="14.0" layoutY="309.0" text="Subscribe For Updates" />
+                  <TextField layoutX="133.0" layoutY="326.0" prefHeight="25.0" prefWidth="359.0" />
+                  <Label layoutX="94.0" layoutY="330.0" prefHeight="17.0" prefWidth="39.0" text="E-mail:" />
+                  <Button layoutX="504.0" layoutY="326.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Submit" />
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Contact Admin">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="268.0" prefWidth="573.0">
+               <children>
+                  <Label layoutX="26.0" layoutY="25.0" text="From: " />
+                  <TextField layoutX="60.0" layoutY="21.0" prefHeight="8.0" prefWidth="366.0" />
+                  <Label layoutX="14.0" layoutY="53.0" text="Subject: " />
+                  <TextField layoutX="59.0" layoutY="51.0" prefHeight="25.0" prefWidth="395.0" />
+                  <TextArea layoutX="59.0" layoutY="84.0" prefHeight="208.0" prefWidth="508.0" />
+                  <Button layoutX="474.0" layoutY="307.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Send" />
+               </children></AnchorPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>
