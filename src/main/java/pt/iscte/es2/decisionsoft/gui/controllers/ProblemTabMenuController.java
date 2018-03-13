@@ -2,12 +2,19 @@ package pt.iscte.es2.decisionsoft.gui.controllers;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import pt.iscte.es2.decisionsoft.application.AlertMessage;
 
 /**
@@ -17,13 +24,7 @@ import pt.iscte.es2.decisionsoft.application.AlertMessage;
  */
 
 public class ProblemTabMenuController {
-	
-	/**
-	 * Instantiation of the Problem object
-	 */
-	
-	private ProblemDefinition problemDefinition;
-	
+
 	/**
 	 * TextField that has the name of the problem
 	 */
@@ -60,11 +61,68 @@ public class ProblemTabMenuController {
 	private Button nextButton;
 	
 	/**
-	 * Instantiates the controller with a {@link ProblemDefinition} object
+	 * TextField for the desirable time (in seconds) that the user wishes to wait for the solution
+	 */
+	
+	@FXML
+	private TextField desirableTimeText;
+	
+	/**
+	 * TextField for the maximum time (in seconds) that the user is willing to wait for the solution
+	 */
+	
+	@FXML
+	private TextField maximumTimeText;
+	
+	/**
+	 * Button that closes the FAQ secondary window
+	 */
+	
+	@FXML
+	private Button closeAboutButton;
+	
+	@FXML
+	private Button closeFAQButton;
+	
+	@FXML
+	private Button saveButton;
+	
+	@FXML
+	private MenuItem aboutMenuItem;
+	
+	@FXML
+	private Button userDefinedCriteriaButton;
+	
+	@FXML
+	private Button cancelVariablesNamesButton;
+	
+	@FXML
+	private Button cancelCriteriasButton;
+	
+	@FXML
+	private Button saveUserDefinedCriteria;
+	
+	@FXML
+	private Button cancelUserDefinedCriteriaButton;
+	
+	@FXML
+	private Button closeFAQ;
+	
+	@FXML
+	private Button cancelAdminEmailButton;
+	
+	@FXML
+	private Button sendEmailButton;
+	
+	Stage secondStage;
+	
+	/**
+	 * Instantiates the controller with a {@link ProblemDefinition} and {@link TimePreferences} objects
 	 */
 	
 	public ProblemTabMenuController() {
-		problemDefinition = new ProblemDefinition();
+		//windowManager = new WindowManager();
+		this.secondStage = new Stage();
 	}
 	
 	/**
@@ -75,7 +133,7 @@ public class ProblemTabMenuController {
 	@FXML
 	protected void handleNext(ActionEvent actionEvent) {
 		try {
-			//problemDefinition.openAlgorithmSelectionMenu(actionEvent);
+			//windowManager.openAlgorithmSelectionMenu(actionEvent,"AlgorithmSelectionMenu.fxml");
 		} catch (Exception e) {
 			e.printStackTrace();
 			new AlertMessage(Alert.AlertType.ERROR, "Error", "You must select an algorithm.").showAndWait();
@@ -89,11 +147,169 @@ public class ProblemTabMenuController {
 	@FXML
 	protected void handleBack(ActionEvent actionEvent) {
 		try {
-			problemDefinition.openUserMenu(actionEvent);
-			System.out.println("Back");
+			openMenu(actionEvent, "UserMenu.fxml");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	protected void handleFaqButton(ActionEvent actionEvent) {
+		try {
+			openSecondaryStage(actionEvent, "FaqWindow.fxml", "FAQ");
+			//generalItemsMenu.openFAQ(actionEvent);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	protected void handleContactAdminButton(ActionEvent actionEvent) {
+		try {
+			//generalItemsMenu.openContactAdmin(actionEvent);
+			openSecondaryStage(actionEvent, "ContactAdmin.fxml", "Contact Admin");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	protected void handleSetCriteria(ActionEvent actionEvent) {
+		try {
+			openSecondaryStage(actionEvent, "CriteriaWindow.fxml", "Criteria Definition");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	protected void handleSaveOptimizationCriteria(ActionEvent actionEvent) {
+		System.out.println("Saving Optimization Criteria");
+	}
+	
+	@FXML
+	protected void handleSaveVariableNames(ActionEvent actionEvent) {
+		System.out.println("Saving Variables Names");
+	}
+	
+	
+	@FXML
+	protected void handleUserDefinedCriteria(ActionEvent actionEvent) {
+		try {
+			openSecondaryStage(actionEvent, "userCriteriaDefinition.fxml", "User Criteria Definition");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	protected void handleSetVariableName(ActionEvent actionEvent) {
+		try {
+			openSecondaryStage(actionEvent, "VariableNamesWindow.fxml", "Variable(s) Name(s)");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	void handleAbout(ActionEvent actionEvent) {
+		try {
+			openSecondaryStage(actionEvent, "AboutMenu.fxml", "About");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	protected void handleExit() {
+		Platform.exit();
+	}
+	
+	
+	/**
+	 * Opens the a menu scene
+	 * @param actionEvent the fired event
+	 * @param fileName String which contains the name of the .fxml that defines the menu design
+	 * @throws IOException
+	 */
+	void openMenu(ActionEvent actionEvent, String fileName) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fileName));
+		Parent parent = loader.load();
+		Scene mainMenuScene = new Scene(parent);
 
+		Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+		window.setScene(mainMenuScene);
+	}
+	
+	/**
+	 * Opens the user menu scene
+	 * @param actionEvent the fired event
+	 * @param fileName that contains the .fxml file name that contains the design of the secondary window
+	 * @param title is a string that contains the title for the secondary window
+	 * @throws IOException
+	 */
+
+	
+	void openSecondaryStage(ActionEvent actionEvent, String fileName, String title) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fileName));
+		Parent parent = loader.load();
+		Scene secondaryScene = new Scene(parent);
+
+        secondStage.setTitle(title);
+        secondStage.setScene(secondaryScene);
+         
+        secondStage.show();
+	}
+	
+	@FXML
+	public void handleAboutClose() {
+		// get a handle to the stage
+	    Stage stage = (Stage) closeAboutButton.getScene().getWindow();
+	    //System.out.println(closeAboutButton.getId());
+	    // do what you have to do
+	    stage.close();
+	}
+	
+	@FXML
+	public void handleCancelVariablesButtons() {
+		Stage stage = (Stage) cancelVariablesNamesButton.getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	public void handleCancelCriterias() {
+		Stage stage = (Stage) cancelCriteriasButton.getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	public void handlesaveUserDefinedCriteria() {
+		System.out.println("Saved User Defined Criteria");
+	}
+	
+	@FXML
+	public void handleCancelUserDefinedCriteriaButton() {
+		Stage stage = (Stage) cancelUserDefinedCriteriaButton.getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	public void handleCloseFAQ() {
+		Stage stage = (Stage) closeFAQ.getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	public void handleCancelAdminEmailButton() {
+		Stage stage = (Stage) cancelAdminEmailButton.getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	public void handleSendEmailButton() {
+		System.out.println("Email sent");
+		Stage stage = (Stage) cancelAdminEmailButton.getScene().getWindow();
+		stage.close();
+		
+	}
 }
