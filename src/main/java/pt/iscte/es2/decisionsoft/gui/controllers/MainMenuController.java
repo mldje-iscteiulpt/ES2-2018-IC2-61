@@ -21,7 +21,7 @@ import pt.iscte.es2.decisionsoft.application.AlertMessage;
  *
  */
 
-public class MainMenuController {
+public class MainMenuController extends MenuController{
 	
 	/**
 	 * RadioButton to select user profile
@@ -53,19 +53,19 @@ public class MainMenuController {
 	final ToggleGroup typeOfUser = new ToggleGroup();
 
 	
-	/**
-	 * Opens the decision-support software configuration scene
-	 * @param actionEvent the fired event
-	 * @throws IOException
-	 */
-	private void openUserMenu(ActionEvent actionEvent) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("UserMenu.fxml"));
-		Parent parent = loader.load();
-		Scene userMenuScene = new Scene(parent);
-
-		Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-		window.setScene(userMenuScene);
-	}
+//	/**
+//	 * Opens the decision-support software configuration scene
+//	 * @param actionEvent the fired event
+//	 * @throws IOException
+//	 */
+//	private void openUserMenu(ActionEvent actionEvent) throws IOException {
+//		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("UserMenu.fxml"));
+//		Parent parent = loader.load();
+//		Scene userMenuScene = new Scene(parent);
+//
+//		Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//		window.setScene(userMenuScene);
+//	}
 	
 	/**
 	 * Defines what happens when the button next is clicked.
@@ -75,8 +75,7 @@ public class MainMenuController {
 	@FXML
 	protected void handleNext(ActionEvent actionEvent) {
 		try {
-			openUserMenu(actionEvent);
-			System.out.println("Next");
+			openMenu(actionEvent, "UserMenu.fxml");
 		} catch (Exception e) {
 			e.printStackTrace();
 			new AlertMessage(Alert.AlertType.ERROR, "Error", "You must select a profile.").showAndWait();

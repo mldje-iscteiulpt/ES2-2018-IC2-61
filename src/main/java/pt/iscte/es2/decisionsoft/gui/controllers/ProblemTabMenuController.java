@@ -23,7 +23,7 @@ import pt.iscte.es2.decisionsoft.application.AlertMessage;
  *
  */
 
-public class ProblemTabMenuController {
+public class ProblemTabMenuController extends MenuController {
 
 	/**
 	 * TextField that has the name of the problem
@@ -133,7 +133,7 @@ public class ProblemTabMenuController {
 	@FXML
 	protected void handleNext(ActionEvent actionEvent) {
 		try {
-			//windowManager.openAlgorithmSelectionMenu(actionEvent,"AlgorithmSelectionMenu.fxml");
+			openMenu(actionEvent,"AlgorithmSelection.fxml");
 		} catch (Exception e) {
 			e.printStackTrace();
 			new AlertMessage(Alert.AlertType.ERROR, "Error", "You must select an algorithm.").showAndWait();
@@ -226,20 +226,20 @@ public class ProblemTabMenuController {
 	}
 	
 	
-	/**
-	 * Opens the a menu scene
-	 * @param actionEvent the fired event
-	 * @param fileName String which contains the name of the .fxml that defines the menu design
-	 * @throws IOException
-	 */
-	void openMenu(ActionEvent actionEvent, String fileName) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fileName));
-		Parent parent = loader.load();
-		Scene mainMenuScene = new Scene(parent);
-
-		Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-		window.setScene(mainMenuScene);
-	}
+//	/**
+//	 * Opens the a menu scene
+//	 * @param actionEvent the fired event
+//	 * @param fileName String which contains the name of the .fxml that defines the menu design
+//	 * @throws IOException
+//	 */
+//	void openMenu(ActionEvent actionEvent, String fileName) throws IOException {
+//		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fileName));
+//		Parent parent = loader.load();
+//		Scene mainMenuScene = new Scene(parent);
+//
+//		Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//		window.setScene(mainMenuScene);
+//	}
 	
 	/**
 	 * Opens the user menu scene

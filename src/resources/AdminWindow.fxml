@@ -20,6 +20,6 @@
       <Button layoutX="503.0" layoutY="316.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Browse" />
       <Button layoutX="503.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Save" />
       <Button layoutX="408.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Load" />
-      <Button layoutX="314.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Close" />
+      <Button layoutX="314.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="&lt; Back" />
    </children>
 </AnchorPane>
