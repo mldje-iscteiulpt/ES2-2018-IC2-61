@@ -21,7 +21,7 @@ import pt.iscte.es2.decisionsoft.application.AlertMessage;
  *
  */
 
-public class MainMenuController extends MenuController{
+public class MainMenuController extends TransitionController{
 	
 	/**
 	 * RadioButton to select user profile

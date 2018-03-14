@@ -23,7 +23,7 @@ import pt.iscte.es2.decisionsoft.application.AlertMessage;
  *
  */
 
-public class ProblemTabMenuController extends MenuController {
+public class ProblemTabMenuController extends TransitionController {
 
 	/**
 	 * TextField that has the name of the problem

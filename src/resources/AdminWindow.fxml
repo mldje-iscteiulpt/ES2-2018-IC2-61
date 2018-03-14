@@ -16,10 +16,10 @@
          </font>
       </Label>
       <TextArea layoutX="14.0" layoutY="39.0" prefHeight="267.0" prefWidth="576.0" />
-      <TextField layoutX="14.0" layoutY="316.0" prefHeight="25.0" prefWidth="477.0" />
-      <Button layoutX="503.0" layoutY="316.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Browse" />
-      <Button layoutX="503.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Save" />
-      <Button layoutX="408.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Load" />
-      <Button layoutX="314.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="&lt; Back" />
+      <TextField layoutX="14.0" layoutY="316.0" prefHeight="25.0" prefWidth="477.0" fx:id="xmlPathTextField" />
+      <Button fx:id="browseButton" layoutX="503.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBrowseButton" prefHeight="25.0" prefWidth="83.0" text="Browse" />
+      <Button fx:id="saveButton" layoutX="503.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="25.0" prefWidth="83.0" text="Save" />
+      <Button fx:id="loadButton" layoutX="408.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleLoadButton" prefHeight="25.0" prefWidth="83.0" text="Load" />
+      <Button fx:id="backButton" layoutX="314.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="83.0" text="&lt; Back" />
    </children>
 </AnchorPane>

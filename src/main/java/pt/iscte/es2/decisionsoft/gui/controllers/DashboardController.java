@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class DashboardController extends MenuController {
+public class DashboardController extends TransitionController {
 	
 	@FXML
 	private Button backButton;

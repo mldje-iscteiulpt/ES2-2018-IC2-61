@@ -19,7 +19,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import pt.iscte.es2.decisionsoft.application.AlertMessage;
 
-public class UserMenuController {
+public class UserMenuController extends TransitionController{
 	
 	/**
 	 * RadioButton used to select creating a configuration file
@@ -84,19 +84,6 @@ public class UserMenuController {
 	final ToggleGroup defineConfig = new ToggleGroup();
 	
 	/**
-	 * Loads the user home folder
-	 */
-	
-	private static final Preferences USER_PREFERENCES = Preferences.userRoot()
-			.node(UserMenuController.class.getName());
-	
-	/**
-	 * Contains the previous used folder
-	 */
-	
-	private static final String LAST_USED_FOLDER = "LAST_USED_FOLDER";
-	
-	/**
 	 * Handles the actions that occur when clicking the next button
 	 * @param actionEvent
 	 */
@@ -104,7 +91,7 @@ public class UserMenuController {
 	@FXML
 	protected void handleNext(ActionEvent actionEvent) {
 		try {
-			openProblemTabMenu(actionEvent);
+			openMenu(actionEvent, "ProblemTabMenu.fxml");
 		} catch (Exception e) {
 			e.printStackTrace();
 			new AlertMessage(Alert.AlertType.ERROR, "Error", "You must select a profile.").showAndWait();
@@ -119,57 +106,11 @@ public class UserMenuController {
 	@FXML
 	protected void handleBack(ActionEvent actionEvent) {
 		try {
-			openMainMenu(actionEvent);
+			openMenu(actionEvent, "MainMenu.fxml");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	/**
-	 * Opens the main menu scene
-	 * @param actionEvent the fired event
-	 * @throws IOException
-	 */
-	private void openMainMenu(ActionEvent actionEvent) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainMenu.fxml"));
-		Parent parent = loader.load();
-		Scene mainMenuScene = new Scene(parent);
-
-		Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-		window.setScene(mainMenuScene);
-	}
-	
-	/**
-	 * Opens the problem tab menu scene
-	 * @param actionEvent the fired event
-	 * @throws IOException
-	 */
-	private void openProblemTabMenu(ActionEvent actionEvent) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ProblemTabMenu.fxml"));
-		Parent parent = loader.load();
-		Scene problemTabMenu = new Scene(parent);
-
-		Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-		window.setScene(problemTabMenu);
-	}
-	
-	/**
-	 * FileChooser which returns a File that the user selected.
-	 * @param stage - Primary Stage which is associated with the main Stage where the buttons are located
-	 * @param title - File chooser title
-	 * @param name - File name example
-	 * @param extensions - Extensions allowed
-	 * @return the selected file or null if no file has been selected
-	 */
-	private File fileChooser(Stage stage, String title, String name, String extensions) {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle(title);
-		fileChooser.setInitialDirectory(new File(
-			USER_PREFERENCES.get(LAST_USED_FOLDER, System.getProperty("user.home"))
-		));
-		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(name, extensions));
-		return fileChooser.showOpenDialog(stage);
 	}
 	
 	/**
@@ -178,7 +119,7 @@ public class UserMenuController {
 	
 	@FXML
 	protected void handleBrowseCreateConfig() {
-		File file = fileChooser(getStage(), ".cf", "Rules.cf", "*.cf");
+		File file = fileChooser(getStage(newConfigField), ".cf", "Rules.cf", "*.cf");
 		if (file != null) {
 			newConfigField.setText(file.getAbsolutePath());
 			updateLastFolderPreference(file.getParent());
@@ -190,27 +131,11 @@ public class UserMenuController {
 	 */
 	@FXML
 	protected void handleBrowseLoadConfig() {
-		File file = fileChooser(getStage(), ".cf", "Rules2.cf", "*.cf");
+		File file = fileChooser(getStage(loadConfigField), ".cf", "Rules2.cf", "*.cf");
 		if (file != null) {
 			loadConfigField.setText(file.getAbsolutePath());
 			updateLastFolderPreference(file.getParent());
 		}
-	}
-
-	
-	/**
-	 * @return the current stage
-	 */
-	private Stage getStage() {
-		return (Stage) newConfigField.getScene().getWindow();
-	}
-	
-	/**
-	 * Changes the last used folder (when opening a file) to the file being opened
-	 * @param lastUsedFolder last used folder for opening a file
-	 */
-	private static void updateLastFolderPreference(String lastUsedFolder) {
-		USER_PREFERENCES.put(LAST_USED_FOLDER, lastUsedFolder);
 	}
 
 }
