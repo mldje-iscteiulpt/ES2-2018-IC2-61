@@ -83,6 +83,14 @@ public class UserMenuController extends TransitionController{
 	
 	final ToggleGroup defineConfig = new ToggleGroup();
 	
+	protected boolean allDataItemsFilled() {
+		if(newConfigField.getText().equals("") || loadConfigField.getText().equals("")) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * Handles the actions that occur when clicking the next button
 	 * @param actionEvent
@@ -91,7 +99,9 @@ public class UserMenuController extends TransitionController{
 	@FXML
 	protected void handleNext(ActionEvent actionEvent) {
 		try {
-			openMenu(actionEvent, "ProblemTabMenu.fxml");
+			if(allDataItemsFilled()) {
+				openMenu(actionEvent, "ProblemTabMenu.fxml");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			new AlertMessage(Alert.AlertType.ERROR, "Error", "You must select a profile.").showAndWait();

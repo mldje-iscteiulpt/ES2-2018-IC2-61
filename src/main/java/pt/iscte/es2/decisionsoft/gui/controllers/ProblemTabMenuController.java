@@ -114,6 +114,18 @@ public class ProblemTabMenuController extends TransitionController {
 	@FXML
 	private Button sendEmailButton;
 	
+	@FXML
+	private TextField numberDecisionVariablesText;
+	
+	@FXML
+	private TextField variableGroupNameText;
+	
+	@FXML
+	private TextField decisionVariableMin;
+	
+	@FXML
+	private TextField decisionVariableMax;
+	
 	Stage secondStage;
 	
 	/**
@@ -133,7 +145,9 @@ public class ProblemTabMenuController extends TransitionController {
 	@FXML
 	protected void handleNext(ActionEvent actionEvent) {
 		try {
-			openMenu(actionEvent,"AlgorithmSelection.fxml");
+			if(allDataItemsFilled()) {
+				openMenu(actionEvent,"AlgorithmSelection.fxml");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			new AlertMessage(Alert.AlertType.ERROR, "Error", "You must select an algorithm.").showAndWait();
@@ -310,6 +324,18 @@ public class ProblemTabMenuController extends TransitionController {
 		System.out.println("Email sent");
 		Stage stage = (Stage) cancelAdminEmailButton.getScene().getWindow();
 		stage.close();
-		
 	}
+	
+	protected boolean allDataItemsFilled() {
+		if(problemNameTextField.getText().equals("") || problemDescriptionTextArea.getText().equals("") ||
+				userEmailTextField.getText().equals("") || desirableTimeText.getText().equals("") || 
+				maximumTimeText.getText().equals("") || numberDecisionVariablesText.getText().equals("") || 
+				variableGroupNameText.getText().equals("") || decisionVariableMin.getText().equals("") || 
+				decisionVariableMax.getText().equals("")) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 }

@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
@@ -52,21 +53,6 @@ public class MainMenuController extends TransitionController{
 	 */
 	final ToggleGroup typeOfUser = new ToggleGroup();
 
-	
-//	/**
-//	 * Opens the decision-support software configuration scene
-//	 * @param actionEvent the fired event
-//	 * @throws IOException
-//	 */
-//	private void openUserMenu(ActionEvent actionEvent) throws IOException {
-//		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("UserMenu.fxml"));
-//		Parent parent = loader.load();
-//		Scene userMenuScene = new Scene(parent);
-//
-//		Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//		window.setScene(userMenuScene);
-//	}
-	
 	/**
 	 * Defines what happens when the button next is clicked.
 	 * @param actionEvent the fired event
@@ -75,7 +61,11 @@ public class MainMenuController extends TransitionController{
 	@FXML
 	protected void handleNext(ActionEvent actionEvent) {
 		try {
-			openMenu(actionEvent, "UserMenu.fxml");
+			if(userRadioButton.isSelected()) {
+				openMenu(actionEvent, "UserMenu.fxml");
+			}else{
+				openMenu(actionEvent, "AdminWindow.fxml");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			new AlertMessage(Alert.AlertType.ERROR, "Error", "You must select a profile.").showAndWait();
@@ -89,10 +79,5 @@ public class MainMenuController extends TransitionController{
 	protected void handleExit() {
 		Platform.exit();
 	}
-	
-
-
-	
-	
 	
 }
