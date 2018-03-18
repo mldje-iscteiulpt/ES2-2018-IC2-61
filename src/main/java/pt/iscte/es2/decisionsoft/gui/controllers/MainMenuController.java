@@ -1,20 +1,14 @@
 package pt.iscte.es2.decisionsoft.gui.controllers;
 
-import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
 import pt.iscte.es2.decisionsoft.application.AlertMessage;
+import pt.iscte.es2.decisionsoft.problem.ProblemInfo;
 
 /**
  * Class that handles the main menu scene

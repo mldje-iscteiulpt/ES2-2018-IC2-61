@@ -5,14 +5,19 @@ import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import pt.iscte.es2.decisionsoft.problem.ProblemInfo;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 
 public class Main extends Application {
+	
+	static ProblemInfo problemInfo;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			problemInfo = new ProblemInfo();
 			primaryStage.setTitle("Decision-making software");
 			URL url = getClass().getClassLoader().getResource("MainMenu.fxml");
 			Parent root = FXMLLoader.load(url);

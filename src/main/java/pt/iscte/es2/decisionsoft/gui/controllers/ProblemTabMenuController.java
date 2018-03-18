@@ -11,11 +11,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pt.iscte.es2.decisionsoft.application.AlertMessage;
+import pt.iscte.es2.decisionsoft.problem.ProblemInfo;
 
 /**
  * Class that handles all of the tabs in ProblemTabMenu scene
@@ -126,7 +130,15 @@ public class ProblemTabMenuController extends TransitionController {
 	@FXML
 	private TextField decisionVariableMax;
 	
+	static ProblemInfo problemInfo;
+	
 	Stage secondStage;
+
+	@FXML
+	private TableView<String> variableNameTable;
+	
+	@FXML
+	private TableColumn<String, String> variableNameColumn;
 	
 	/**
 	 * Instantiates the controller with a {@link ProblemDefinition} and {@link TimePreferences} objects
@@ -134,7 +146,13 @@ public class ProblemTabMenuController extends TransitionController {
 	
 	public ProblemTabMenuController() {
 		//windowManager = new WindowManager();
+		problemInfo = new ProblemInfo();
 		this.secondStage = new Stage();
+		//tableView.getId();
+		//tableView.getItems().addAll("");
+		//variableNameColumn.setUserData("");
+		//tableView.setPlaceholder(new Label(""));
+		//variableNameTable.getItems().add("");
 	}
 	
 	/**
@@ -146,6 +164,7 @@ public class ProblemTabMenuController extends TransitionController {
 	protected void handleNext(ActionEvent actionEvent) {
 		try {
 			if(allDataItemsFilled()) {
+				setProblemInfoData();
 				openMenu(actionEvent,"AlgorithmSelection.fxml");
 			}
 		} catch (Exception e) {
@@ -336,6 +355,26 @@ public class ProblemTabMenuController extends TransitionController {
 		}
 		
 		return true;
+	}
+	
+	protected void setProblemInfoData() {
+		System.out.println("Problem Name: " + problemNameTextField.getText());
+		System.out.println("Problem Description: " + problemDescriptionTextArea.getText());
+		System.out.println("User Email: " + userEmailTextField.getText());
+		System.out.println("Desirable Time: " + Integer.parseInt(desirableTimeText.getText()));
+		System.out.println("Max Time: " + Integer.parseInt(maximumTimeText.getText()));
+		System.out.println("Number of Decision Variables: " + Integer.parseInt(numberDecisionVariablesText.getText()));
+		System.out.println("Min Decision Variable: " + Integer.parseInt(decisionVariableMin.getText()));
+		System.out.println("Max Decision Variable: " + Integer.parseInt(decisionVariableMax.getText()));
+		problemInfo.setProblemName(problemNameTextField.getText());
+		problemInfo.setProblemDescription(problemDescriptionTextArea.getText());
+		problemInfo.setUserEmail(userEmailTextField.getText());
+		problemInfo.setDesirableTime(Integer.parseInt(desirableTimeText.getText()));
+		problemInfo.setMaxTime(Integer.parseInt(maximumTimeText.getText()));
+		problemInfo.setNumberOfDecisionVariables(Integer.parseInt(numberDecisionVariablesText.getText()));
+		problemInfo.setVariableGroupName(variableGroupNameText.getText());
+		problemInfo.setDecisionVariableMin(Integer.parseInt(decisionVariableMin.getText()));
+		problemInfo.setDecisionVariableMax(Integer.parseInt(decisionVariableMax.getText()));
 	}
 	
 }
