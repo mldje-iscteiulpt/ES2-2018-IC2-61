@@ -86,6 +86,9 @@
                         <Button fx:id="setVariableNameButton" layoutX="338.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleSetVariableName" prefHeight="25.0" prefWidth="210.0" text="Set variable(s) name(s)" />
                         <Button fx:id="backButton11" layoutX="464.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleBack" text="&lt; Back" />
                         <Button fx:id="nextButton11" layoutX="526.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleNext" text="Next &gt;" />
+                        <RadioButton layoutX="26.0" layoutY="128.0" mnemonicParsing="false" text="Integer" />
+                        <RadioButton layoutX="26.0" layoutY="163.0" mnemonicParsing="false" text="Double" />
+                        <RadioButton layoutX="26.0" layoutY="198.0" mnemonicParsing="false" text="Boolean" />
                      </children>
                   </AnchorPane>
                </content>
