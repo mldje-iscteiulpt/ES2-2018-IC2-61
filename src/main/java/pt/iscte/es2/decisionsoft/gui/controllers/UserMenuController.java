@@ -84,7 +84,7 @@ public class UserMenuController extends TransitionController{
 	final ToggleGroup defineConfig = new ToggleGroup();
 	
 	protected boolean allDataItemsFilled() {
-		if(newConfigField.getText().equals("") || loadConfigField.getText().equals("")) {
+		if(newConfigField.getText().equals("") && loadConfigField.getText().equals("")) {
 			return false;
 		}
 		
@@ -100,7 +100,11 @@ public class UserMenuController extends TransitionController{
 	protected void handleNext(ActionEvent actionEvent) {
 		try {
 			if(allDataItemsFilled()) {
-				openMenu(actionEvent, "ProblemTabMenu.fxml");
+				if(!(loadConfigField.getText().equals(""))){
+					openMenu(actionEvent, "AlgorithmSelection.fxml");
+				}else {
+					openMenu(actionEvent, "ProblemTabMenu.fxml");
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
