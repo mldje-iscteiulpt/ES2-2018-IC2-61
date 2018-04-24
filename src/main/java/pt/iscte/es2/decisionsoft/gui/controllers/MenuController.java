@@ -2,7 +2,6 @@ package pt.iscte.es2.decisionsoft.gui.controllers;
 
 import java.io.File;
 import java.util.prefs.Preferences;
-
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;

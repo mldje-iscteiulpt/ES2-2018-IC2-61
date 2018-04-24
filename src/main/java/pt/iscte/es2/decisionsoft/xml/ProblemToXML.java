@@ -5,7 +5,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import pt.iscte.es2.decisionsoft.problem.ProblemInfo;
+import pt.iscte.es2.decisionsoft.domain.ProblemInfo;
 
 /**
  * Class that transforms a problem information/attributos to an .xml file

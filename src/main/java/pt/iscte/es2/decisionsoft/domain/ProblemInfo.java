@@ -1,4 +1,6 @@
-package pt.iscte.es2.decisionsoft.problem;
+package pt.iscte.es2.decisionsoft.domain;
+
+import java.util.List;
 
 /**
  * Class that creates an object which contains the problem information
@@ -8,9 +10,9 @@ package pt.iscte.es2.decisionsoft.problem;
 
 public class ProblemInfo {
 	
-	private String problemName, problemDescription, userEmail, algorithmSelectionMode, jarPath, variableGroupName; int desirableTime, 
+	private String problemName, problemDescription, userEmail, algorithmSelectionMode, jarPath, variableGroupName, typeOfVariable; int desirableTime, 
 	maxTime, numberOfDecisionVariables, decisionVariableMin, decisionVariableMax; String[] invalidValues, decisionVariables, 
-	availableAlgorithms; 
+	availableAlgorithms; List<Criteria> definitiveCriterias; List<Variable> definitiveVariables;
 	
 	public String getProblemName() {
 		return problemName;
@@ -34,6 +36,14 @@ public class ProblemInfo {
 
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
+	}
+	
+	public String getTypeOfVariable() {
+		return typeOfVariable;
+	}
+	
+	public void setTypeOfVariable(String typeOfVariable) {
+		this.typeOfVariable = typeOfVariable;
 	}
 
 	public String getAlgorithmSelectionMode() {
@@ -123,5 +133,26 @@ public class ProblemInfo {
 	public void setAvailableAlgorithms(String[] availableAlgorithms) {
 		this.availableAlgorithms = availableAlgorithms;
 	}
+	
+	public List<Criteria> getCriterias(){
+		return definitiveCriterias;
+	}
+	
+	public List<Variable> getVariables(){
+		return definitiveVariables;
+	}
+	
+	public void setCriterias(List<Criteria> criterias) {
+		this.definitiveCriterias = criterias;
+		for(int i = 0; i != definitiveCriterias.size(); i++) {
+			System.out.println(i + ": " + definitiveCriterias.get(i).getName());
+		}
+	}
 
+	public void setVariables(List<Variable> variables) {
+		this.definitiveVariables = variables;
+		for(int i = 0; i != definitiveVariables.size(); i++) {
+			System.out.println(i + ": " + definitiveVariables.get(i).getVariableName());
+		}
+	}
 }

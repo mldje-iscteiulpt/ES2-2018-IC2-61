@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 
 public class TransitionController extends MenuController{
 	
+	protected FXMLLoader loader;
+	
 	/**
 	 * Opens the a menu scene
 	 * @param actionEvent the fired event
@@ -18,7 +20,7 @@ public class TransitionController extends MenuController{
 	 * @throws IOException
 	 */
 	void openMenu(ActionEvent actionEvent, String fileName) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fileName));
+		loader = new FXMLLoader(getClass().getClassLoader().getResource(fileName));
 		Parent parent = loader.load();
 		Scene mainMenuScene = new Scene(parent);
 

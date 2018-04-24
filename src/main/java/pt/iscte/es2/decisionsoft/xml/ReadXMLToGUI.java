@@ -3,6 +3,8 @@ package pt.iscte.es2.decisionsoft.xml;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import javafx.scene.control.TextArea;
+
 /**
  * Reads the .xml file and inserts its information in the GUI TextArea for the user to see
  * @author Mario
@@ -11,15 +13,16 @@ import java.io.FileReader;
 
 public class ReadXMLToGUI {
 
-	public void readXMLToTextArea() {
+	public void readXMLToTextArea(String filePath, TextArea textArea) {
 		try { 
-			BufferedReader in = new BufferedReader(new FileReader("c:\\myExample.xml")); 
+			BufferedReader in = new BufferedReader(new FileReader(filePath)); 
 			StringBuffer output = new StringBuffer(); 
 			String st; 
 			while ((st=in.readLine()) != null) { 
 				output.append(st); 
 			} 
-			System.out.println(output.toString()); 
+			textArea.setText(output.toString());
+//			System.out.println(output.toString()); 
 			in.close(); 
 		
 		} catch (Exception fx) { 

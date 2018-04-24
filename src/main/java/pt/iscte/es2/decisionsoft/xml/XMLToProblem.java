@@ -5,7 +5,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import pt.iscte.es2.decisionsoft.problem.ProblemInfo;
+import pt.iscte.es2.decisionsoft.domain.ProblemInfo;
 
 /**
  * Reads an .xml file and instantiates a {@link ProblemInfo} object with the info contained in the .xml file

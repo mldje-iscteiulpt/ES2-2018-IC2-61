@@ -2,6 +2,8 @@ package pt.iscte.es2.decisionsoft.gui.controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.prefs.Preferences;
 
 import javafx.event.ActionEvent;
@@ -18,6 +20,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import pt.iscte.es2.decisionsoft.application.AlertMessage;
+import pt.iscte.es2.decisionsoft.xml.XMLUtility;
 
 public class UserMenuController extends TransitionController{
 	
@@ -133,7 +136,7 @@ public class UserMenuController extends TransitionController{
 	
 	@FXML
 	protected void handleBrowseCreateConfig() {
-		File file = fileChooser(getStage(newConfigField), ".cf", "Rules.cf", "*.cf");
+		File file = fileChooser(getStage(newConfigField), ".cf", "Config File (.cf)", "*.cf");
 		if (file != null) {
 			newConfigField.setText(file.getAbsolutePath());
 			updateLastFolderPreference(file.getParent());
@@ -145,7 +148,7 @@ public class UserMenuController extends TransitionController{
 	 */
 	@FXML
 	protected void handleBrowseLoadConfig() {
-		File file = fileChooser(getStage(loadConfigField), ".cf", "Rules2.cf", "*.cf");
+		File file = fileChooser(getStage(loadConfigField), ".cf", "Config File (.cf)", "*.cf");
 		if (file != null) {
 			loadConfigField.setText(file.getAbsolutePath());
 			updateLastFolderPreference(file.getParent());

@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import pt.iscte.es2.decisionsoft.application.AlertMessage;
-import pt.iscte.es2.decisionsoft.problem.ProblemInfo;
+import pt.iscte.es2.decisionsoft.domain.ProblemInfo;
 
 /**
  * Class that handles the main menu scene

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.iscte.es2.decisionsoft.gui.controllers.ProblemTabMenuController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.iscte.es2.decisionsoft.gui.controllers.CriteriaWindowController">
    <children>
       <Button fx:id="saveButton" layoutX="512.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleSaveOptimizationCriteria" prefHeight="25.0" prefWidth="74.0" text="Save" />
       <Button fx:id="userDefinedCriteriaButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleUserDefinedCriteria" text="User-defined Criteria" />

@@ -1,22 +1,27 @@
 package pt.iscte.es2.decisionsoft.application;
 	
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import pt.iscte.es2.decisionsoft.problem.ProblemInfo;
+import pt.iscte.es2.decisionsoft.domain.Criteria;
+import pt.iscte.es2.decisionsoft.domain.ExperimentContext;
+import pt.iscte.es2.decisionsoft.domain.ProblemInfo;
+import pt.iscte.es2.decisionsoft.domain.Variable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 
 public class Main extends Application {
 	
-	static ProblemInfo problemInfo;
+	public static ProblemInfo problemInfo;
 	
 	@Override
-	public void start(Stage primaryStage) {
-		try {
+	public void start(Stage primaryStage) throws IOException {
 			problemInfo = new ProblemInfo();
 			primaryStage.setTitle("Decision-making software");
 			URL url = getClass().getClassLoader().getResource("MainMenu.fxml");
@@ -27,9 +32,7 @@ public class Main extends Application {
 
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public static void main(String[] args) {

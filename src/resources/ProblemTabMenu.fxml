@@ -86,9 +86,12 @@
                         <Button fx:id="setVariableNameButton" layoutX="338.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleSetVariableName" prefHeight="25.0" prefWidth="210.0" text="Set variable(s) name(s)" />
                         <Button fx:id="backButton11" layoutX="464.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleBack" text="&lt; Back" />
                         <Button fx:id="nextButton11" layoutX="526.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleNext" text="Next &gt;" />
-                        <RadioButton layoutX="26.0" layoutY="128.0" mnemonicParsing="false" text="Integer" />
-                        <RadioButton layoutX="26.0" layoutY="163.0" mnemonicParsing="false" text="Double" />
-                        <RadioButton layoutX="26.0" layoutY="198.0" mnemonicParsing="false" text="Boolean" />
+                        <RadioButton fx:id="integerRadioButton" layoutX="26.0" layoutY="128.0" mnemonicParsing="false" selected="true" text="Integer">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="typeModeGroup" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="doubleRadioButton" layoutX="26.0" layoutY="163.0" mnemonicParsing="false" text="Double" toggleGroup="$typeModeGroup" />
+                        <RadioButton fx:id="booleanRadioButton" layoutX="26.0" layoutY="198.0" mnemonicParsing="false" text="Boolean" toggleGroup="$typeModeGroup" />
                      </children>
                   </AnchorPane>
                </content>
@@ -98,7 +101,7 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="jarFilePathTextField" layoutX="14.0" layoutY="173.0" prefHeight="25.0" prefWidth="494.0" />
-                        <Button layoutX="516.0" layoutY="173.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Browse" />
+                        <Button fx:id="browseJar" layoutX="516.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleBrowseJar" prefHeight="25.0" prefWidth="70.0" text="Browse" />
                         <Label layoutX="14.0" layoutY="156.0" text="Select evaluation file (.jar)" />
                         <Button fx:id="backButton111" layoutX="464.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleBack" text="&lt; Back" />
                         <Button fx:id="nextButton111" layoutX="526.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleNext" text="Next &gt;" />
@@ -113,13 +116,13 @@
                         <Label layoutX="14.0" layoutY="14.0" text="Choose the Algorithm selection mode:" />
                         <Button layoutX="409.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="83.0" text="&lt; Back" />
                         <Button layoutX="507.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleNext" prefHeight="27.0" prefWidth="78.0" text="Next &gt;" />
-                        <RadioButton layoutX="14.0" layoutY="61.0" mnemonicParsing="false" selected="true" text="Manual">
+                        <RadioButton fx:id="manualRadioButton" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" selected="true" text="Manual">
                            <toggleGroup>
                               <ToggleGroup fx:id="algorithmGroup" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton layoutX="246.0" layoutY="61.0" mnemonicParsing="false" text="Mixed" toggleGroup="$algorithmGroup" />
-                        <RadioButton layoutX="464.0" layoutY="61.0" mnemonicParsing="false" text="Automatic" toggleGroup="$algorithmGroup" />
+                        <RadioButton fx:id="mixedRadioButton" layoutX="246.0" layoutY="61.0" mnemonicParsing="false" text="Mixed" toggleGroup="$algorithmGroup" />
+                        <RadioButton fx:id="autoRadioButton" layoutX="464.0" layoutY="61.0" mnemonicParsing="false" text="Automatic" toggleGroup="$algorithmGroup" />
                      </children>
                   </AnchorPane>
                </content>
